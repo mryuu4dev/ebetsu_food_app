@@ -1,3 +1,4 @@
+import 'package:ef_flutter_app/all_shops_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -95,7 +96,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ],
       ),
       body: <Widget>[
-        Container(),
+        const AllShopsScreen(),
         Container(),
         Container(),
       ][_selectedIndex],
