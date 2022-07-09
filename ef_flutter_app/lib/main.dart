@@ -1,8 +1,13 @@
 import 'package:ef_flutter_app/all_shops_screen.dart';
+import 'package:ef_flutter_app/shops_map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_config/flutter_config.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
+  await FlutterConfig.loadEnvVariables();
+
   runApp(const MyApp());
 }
 
@@ -96,9 +101,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ],
       ),
       body: <Widget>[
+        Container(),
+        ShopsMapScreen(),
         const AllShopsScreen(),
-        Container(),
-        Container(),
       ][_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex, // 選択中のindex
@@ -115,9 +120,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'マップ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.confirmation_number,),
-            activeIcon: Icon(Icons.confirmation_number_outlined,),
-            label: 'クーポン',
+            icon: Icon(Icons.store,),
+            activeIcon: Icon(Icons.store_outlined,),
+            label: 'ショップ',
           ),
         ],
       ),
