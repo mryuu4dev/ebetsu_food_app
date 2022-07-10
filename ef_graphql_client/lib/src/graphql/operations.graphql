@@ -1,0 +1,14 @@
+query FetchShopList {
+  shops {
+    id
+    name
+    description
+    address
+    open
+    close
+    parking
+    photo
+    url
+    wifi
+  }
+}

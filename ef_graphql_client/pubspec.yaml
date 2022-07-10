@@ -6,9 +6,16 @@ version: 1.0.0
 environment:
   sdk: '>=2.17.3 <3.0.0'
 
-# dependencies:
-#   path: ^1.8.0
+dependencies:
+  ferry: ^0.10.4
+  gql_http_link: ^0.4.0
+  path: ^1.8.0
+
+dependency_overrides:
+  gql: 0.13.0 # https://github.com/gql-dart/gql/issues/308#issuecomment-1098179710
 
 dev_dependencies:
+  build_runner: ^2.1.11
+  ferry_generator: ^0.4.4
   lints: ^2.0.0
   test: ^1.16.0

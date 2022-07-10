@@ -1,0 +1,29 @@
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+type Map {
+  lat: Float
+  lng: Float
+}
+
+type Query {
+  shops: [Shop]!
+}
+
+type Shop {
+  id: ID!
+  name: String!
+  description: String
+  address: String
+  open: String
+  close: String
+  parking: String
+  photo: String
+  map: Map
+  url: String
+  wifi: String
+}
+
