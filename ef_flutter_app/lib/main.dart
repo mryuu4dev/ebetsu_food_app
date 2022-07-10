@@ -1,13 +1,20 @@
 import 'package:ef_flutter_app/all_shops_screen.dart';
 import 'package:ef_flutter_app/all_sweets_screen.dart';
 import 'package:ef_flutter_app/shops_map_screen.dart';
+import 'package:ef_graphql_client/ef_graphql_client.dart';
+import 'package:ferry/ferry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
+import 'package:get_it/get_it.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
   await FlutterConfig.loadEnvVariables();
+
+  GetIt.instance.registerSingleton<Client>(
+    initClient('http://10.207.171.45:4000')
+  );
 
   runApp(const MyApp());
 }

@@ -1,9 +1,12 @@
 import 'package:ef_flutter_app/shop_detail_view.dart';
+import 'package:ef_graphql_client/ef_graphql_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class ShopListTile extends StatelessWidget {
-  const ShopListTile({Key? key}) : super(key: key);
+  const ShopListTile({Key? key, required this.shop}) : super(key: key);
+
+  final GFetchShopListData_shops shop;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class ShopListTile extends StatelessWidget {
           onPressed: () {
             showCupertinoModalPopup(
               context: context, 
-              builder: (context) => const ShopDetailView(),
+              builder: (context) => ShopDetailView(shop: shop,),
             );
           },
           child: Row(
@@ -23,9 +26,9 @@ class ShopListTile extends StatelessWidget {
                 width: 90,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  image: const DecorationImage(
+                  image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage('http://placehold.jp/100x100.png'),
+                    image: NetworkImage(shop.photo ?? 'http://placehold.jp/100x100.png'),
                   ),
                 ),
               ),
@@ -34,20 +37,20 @@ class ShopListTile extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
-                      "Ebetsuto ショップ",
-                      style: TextStyle(
+                      shop.name,
+                      style: const TextStyle(
                         color: Colors.black87,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 5,),
+                    const SizedBox(height: 5,),
                     Text(
-                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                      shop.description ?? '説明文が登録されていません',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.blueGrey,
                       ),
                     ),

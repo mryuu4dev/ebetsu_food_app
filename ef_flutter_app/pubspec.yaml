@@ -14,11 +14,19 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_maps_flutter: ^2.1.8
   flutter_config: ^2.0.0
+  ferry: ^0.10.4
+  gql_http_link: ^0.4.0
+  ferry_flutter: ^0.5.4
+  get_it: ^7.2.0
+  ef_graphql_client:
+    path: ../ef_graphql_client
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  ferry_generator: ^0.4.4
+  build_runner: ^2.1.11
 
 flutter:
   uses-material-design: true

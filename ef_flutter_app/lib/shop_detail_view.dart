@@ -1,8 +1,11 @@
+import 'package:ef_graphql_client/ef_graphql_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class ShopDetailView extends StatelessWidget {
-  const ShopDetailView({Key? key}) : super(key: key);
+  const ShopDetailView({Key? key, required this.shop,}) : super(key: key);
+
+  final GFetchShopListData_shops shop; 
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,7 @@ class ShopDetailView extends StatelessWidget {
                   children: [
                     const SizedBox(height: 40,),
                     Text(
-                      "Ebetsuto ショップ",
+                      shop.name,
                       style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
                     ),
                     const SizedBox(height: 20,),
@@ -39,23 +42,23 @@ class ShopDetailView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Image.network(
-                        'http://placehold.jp/500x500.png',
+                        shop.photo ?? 'http://placehold.jp/500x500.png',
                         fit: BoxFit.fitWidth,
                       ),
                     ),
                     const SizedBox(height: 20,),
-                    const Material(
+                    Material(
                       child: Text(
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                        style: TextStyle(fontSize: 20,),
+                        shop.description?? '説明文が登録されていません',
+                        style: const TextStyle(fontSize: 20, backgroundColor: Colors.white,),
                       ),
                     ),
                     const SizedBox(height: 40,),
                     Center(
                       child: CupertinoButton(
                         onPressed: () => Navigator.pop(context),
-                        color: Colors.blue,
-                        child: const Text('もどる'),
+                        color: Theme.of(context).primaryColor,
+                        child: const Text('もどる', style: TextStyle(color: Colors.white,)),
                       ),
                     ),
                     const SizedBox(height: 40,),
