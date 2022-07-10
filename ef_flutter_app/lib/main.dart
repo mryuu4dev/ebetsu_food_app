@@ -108,11 +108,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
         ],
       ),
-      body: <Widget>[
-        const AllSweetsScreen(),
-        ShopsMapScreen(),
-        const AllShopsScreen(),
-      ][_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [const AllSweetsScreen(), ShopsMapScreen(), AllShopsScreen()],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex, // 選択中のindex
         onTap: _onTapItem, // タップで選択中のindexを変更
